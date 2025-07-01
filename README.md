@@ -139,5 +139,5 @@ Este proyecto está bajo la Licencia MIT. Ver el archivo [LICENSE](LICENSE) para
 
 **[Tu Nombre]**
 
-*   **GitHub:** [@TU_USUARIO](https://github.com/TU_USUARIO)
-*   **LinkedIn:** [linkedin.com/in/TU_PERFIL](https://linkedin.com/in/TU_PERFIL)
+*   **GitHub:** [lincol31](https://github.com/lincoln31)
+*   **LinkedIn:** [linkedin.com](https://www.linkedin.com/in/juanestebancollazosvalencia31)

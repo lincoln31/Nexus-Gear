@@ -1,0 +1,24 @@
+# Archivos de IDEs
+.idea/
+.vscode/
+*.iml
+*.ipr
+*.iws
+
+# Archivos de compilación de Java y Maven/Gradle
+target/
+build/
+.mvn/
+*.jar
+*.war
+*.ear
+
+# Archivos de log
+*.log
+
+# Archivos de configuración local
+.env
+
+# Archivos del sistema operativo
+.DS_Store
+Thumbs.db

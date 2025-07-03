@@ -1,0 +1,28 @@
+# Usamos una versión moderna y estable de la especificación de Compose
+version: '3.8'
+
+# Definición de todos los servicios (contenedores) que componen nuestra aplicación
+services:
+  # Servicio para la base de datos PostgreSQL
+  postgres-db:
+    image: postgres:15-alpine # Imagen oficial de Postgres, versión 15, base Alpine para un tamaño reducido
+    container_name: nexus-postgres-db
+    environment:
+      - POSTGRES_USER=nexususer # Usuario para la base de datos
+      - POSTGRES_PASSWORD=nexuspassword # Contraseña para el usuario
+      - POSTGRES_DB=nexusdb # Nombre de la base de datos que se creará al iniciar
+    ports:
+      - "5433:5432" # Mapea el puerto de la DB del contenedor al puerto de tu máquina local
+    volumes:
+      - nexus-db-data:/var/lib/postgresql/data # Persiste los datos de la DB para que no se pierdan al reiniciar el contenedor
+
+  # Servicio para la caché de Redis
+  redis-cache:
+    image: redis:7-alpine # Imagen oficial de Redis, versión 7, base Alpine
+    container_name: nexus-redis-cache
+    ports:
+      - "6379:6379" # Mapea el puerto de Redis del contenedor al de tu máquina
+
+# Definición de los volúmenes nombrados para persistir datos
+volumes:
+  nexus-db-data:

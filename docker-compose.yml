@@ -8,13 +8,14 @@ services:
     image: postgres:15-alpine # Imagen oficial de Postgres, versión 15, base Alpine para un tamaño reducido
     container_name: nexus-postgres-db
     environment:
-      - POSTGRES_USER=nexususer # Usuario para la base de datos
-      - POSTGRES_PASSWORD=nexuspassword # Contraseña para el usuario
-      - POSTGRES_DB=nexusdb # Nombre de la base de datos que se creará al iniciar
+      - POSTGRES_USER=nexususer
+      - POSTGRES_PASSWORD=nexuspassword
+      - POSTGRES_DB=nexusdb
     ports:
-      - "5433:5432" # Mapea el puerto de la DB del contenedor al puerto de tu máquina local
+      - "5433:5432"
     volumes:
-      - nexus-db-data:/var/lib/postgresql/data # Persiste los datos de la DB para que no se pierdan al reiniciar el contenedor
+      - nexus-db-data:/var/lib/postgresql/data
+    command: postgres -c 'log_statement=all' -c 'password_encryption=scram-sha-256'
 
   # Servicio para la caché de Redis
   redis-cache:

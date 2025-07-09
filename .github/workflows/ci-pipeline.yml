@@ -36,3 +36,7 @@ jobs:
       # 4. Construye y prueba el 'product-service'
       - name: Build and Test product-service
         run: mvn -B clean install --file Backend/product-service/pom.xml
+
+      # 5. Construye y prueba el 'order-service'
+      - name: Build and Test order-service
+        run: mvn -B clean install --file Backend/order-service/pom.xml

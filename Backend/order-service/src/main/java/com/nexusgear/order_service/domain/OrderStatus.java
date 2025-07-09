@@ -1,5 +1,4 @@
-package com.nexusgear.orderservice.domain;
-
+package com.nexusgear.order_service.domain;
 
 public enum OrderStatus {
     PENDING,

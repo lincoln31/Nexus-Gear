@@ -1,4 +1,4 @@
-package com.nexusgear.orderservice.domain;
+package com.nexusgear.order_service.domain;
 
 import jakarta.persistence.*;
 import java.math.BigDecimal;

@@ -77,24 +77,45 @@ Sigue estos pasos para levantar el entorno completo en tu máquina local.
     cd TU_REPO
     ```
 
-2.  **Configura las variables de entorno:**
-    Crea un archivo `.env` en la raíz del proyecto copiando el ejemplo:
+2.  **Levanta la Infraestructura Base (Base de Datos y Caché):**
+    Este comando iniciará los contenedores de PostgreSQL y Redis en segundo plano (`-d`).
     ```bash
-    cp .env.example .env
+    docker-compose up -d
     ```
-    Revisa el archivo `.env` y ajusta los valores si es necesario (para el MVP, los valores por defecto deberían funcionar).
+    Puedes verificar que están corriendo con `docker ps`.
 
-3.  **Levanta todos los servicios con Docker Compose:**
-    Este comando construirá las imágenes de cada microservicio y del frontend, y levantará todos los contenedores, incluyendo la base de datos y el caché.
-    ```bash
-    docker-compose up --build
-    ```
+3.  **Ejecuta los Microservicios de Backend:**
+    Necesitarás una terminal separada para cada microservicio.
 
-4.  **¡Listo!**
-    *   El frontend estará disponible en `http://localhost:3000`
-    *   Los servicios de backend estarán expuestos a través de un API Gateway (si lo implementas) o en sus respectivos puertos definidos en `docker-compose.yml`.
+    *   **Terminal 1: Iniciar `product-service`**
+        ```bash
+        cd Backend/product-service
+        mvn spring-boot:run
+        ```
+        El servicio estará disponible en `http://localhost:8081`.
 
----
+    *   **Terminal 2: Iniciar `order-service`**
+        ```bash
+        cd Backend/order-service
+        mvn spring-boot:run
+        ```
+        El servicio estará disponible en `http://localhost:8082`.
+
+    *   *(Próximamente: Iniciar `user-auth-service`)*
+
+4.  **Ejecuta la Aplicación Frontend:**
+    En una nueva terminal, inicia la aplicación de React.
+
+    *   **Terminal 3: Iniciar Frontend**
+        ```bash
+        cd frontend
+        npm install # Solo la primera vez
+        npm run dev
+        ```
+        La aplicación web estará disponible en `http://localhost:5173`.
+
+5.  **¡Listo para Desarrollar!**
+    Ahora tienes todo el stack corriendo localmente. Abre `http://localhost:5173` en tu navegador para ver la aplicación.
 
 ## 🧪 Ejecutar Pruebas
 
